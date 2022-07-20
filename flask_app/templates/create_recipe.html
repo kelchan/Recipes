@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create Recipe</title>
+    </head>
+    <body>
+        <form action="/recipe/create" method="post">
+            <h1>Create Recipe</h1>
+            <p>
+                <a href="/recipes">Back to recipes!</a>
+            </p>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name">
+                {% for message in get_flashed_messages( category_filter = ['error_recipe_name'] ) %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <input type="text" name="description" id="description">
+                {% for message in get_flashed_messages( category_filter = ['error_recipe_description'] ) %}
+                    {{message}}
+                {% endfor %}
+            </div>
+            <div>
+                <label for="email">Instructions</label>
+                <input type="text" name="instructions" id="instructions">
+                {% for message in get_flashed_messages( category_filter = ['error_recipe_instructions'] ) %}
+                    {{message}}
+                {% endfor %}
+            </div>
+            <div>
+                <label for="date">Date cooked/made:</label>
+                <input type="date" name="cooked_date" id="cooked_date">
+            </div>
+            <div>
+                <label for="under_30">Under 30 minutes:</label>
+                <div>
+                    Yes <input type="radio" name="under_30" value="1">
+                    No <input type="radio" name="under_30" value="2">
+                </div>
+            </div>
+            <button type="submit">Register</button>
+        </form>
+    </body>
+</html>
